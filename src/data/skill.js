@@ -1,6 +1,8 @@
 const skill = [
+    // Warrior
     {
         id: "thrust",
+        class:"warrior",
         name: "Thrust",
         type: "active",
         cost: 15,
@@ -12,61 +14,240 @@ const skill = [
         desc: "",
         damageScale: 1.5,
         maxLevel: 5,
-        upgradeBonus: 0.1,
+        upgradeBonus: 0.15,
         target:"single",
-        class:"warrior"
-    }
+    },
+
+    {
+        id: "counter",
+        class: "warrior",
+        name: "Counter Stance",
+        type: "active",
+        resource: "stamina",
+        target: "single",
+
+        cost: 25,
+        requiredLevel: 1,
+        skillLevel: 1,
+
+        status: "counter",
+        statusChance: 100,
+        desc: "",
+        damageScale: 1.1,
+        maxLevel: 5,
+        upgradeBonus: 0.1,
+    },
+
+    {
+        id: "crossSlash",
+        class: "warrior",
+        name: "Cross Slash",
+        type: "active",
+        resource: "stamina",
+        target: "single",
+
+        cost: 15,
+        requiredLevel: 1,
+        skillLevel: 1,
+
+        status: "",
+        statusChance: 0,
+        desc: "",
+        damageScale: 1.6,
+        maxLevel: 5,
+        upgradeBonus: 0.1,
+    },
+
+    // Mage
+    {
+        id: "fireball",
+        name: "Fire Ball",
+        class: "mage",
+        type: "active",
+        resource: "mana",
+        target: "single",
+
+        cost: 20,
+        requiredLevel: 1,
+        skillLevel: 1,
+
+        status: "burn",
+        statusChance: 20,
+        desc: "",
+        damageScale: 2.0,
+        maxLevel: 5,
+        upgradeBonus: 0.15,
+    },
+
+    {
+        id: "iceSpike",
+        name: "Ice Spike",
+        class: "mage",
+        type: "active",
+        resource: "mana",
+        target: "single",
+
+        cost: 20,
+        requiredLevel: 1,
+        skillLevel: 1,
+
+        status: "cold",
+        statusChance: 25,
+        desc: "",
+        damageScale: 2.0,
+        maxLevel: 5,
+        upgradeBonus: 0.15,
+    },
+
+    {
+        id: "lightningBolt",
+        name: "Lightning Bolt",
+        class: "mage",
+        type: "active",
+        resource: "mana",
+        target: "single",
+
+        cost: 20,
+        requiredLevel: 1,
+        skillLevel: 1,
+
+        status: "electrified",
+        statusChance: 25,
+        desc: "",
+        damageScale: 2.0,
+        maxLevel: 5,
+        upgradeBonus: 0.15,
+    },
+
+    // Sorcerer
+    {
+        id: "chaosBlast",
+        name: "Chaos Blast",
+        class: "sorcerer",
+        type: "active",
+        resource: "mana",
+        target: "single",
+
+        cost: 20,
+        requiredLevel: 1,
+        skillLevel: 1,
+
+        status: "poison",
+        statusChance: 50,
+        desc: "",
+        damageScale: 1.5,
+        maxLevel: 5,
+        upgradeBonus: 0.15,
+    },
+
+    {
+        id: "skeletonWarrior",
+        name: "Skeleton Warrior",
+        class: "sorcerer",
+        type: "active",
+        resource: "mana",
+        target: "single",
+
+        cost: 25,
+        requiredLevel: 1,
+        skillLevel: 1,
+
+        status: "",
+        statusChance: 50,
+        desc: "",
+        spawnerHP: 0.8,
+        damageScale: 1.1,
+        maxLevel: 5,
+        upgradeBonus: 0.11,
+    },
+
+    {
+        id: "curseHand",
+        name: "Curse Hand",
+        class: "sorcerer",
+        type: "active",
+        resource: "mana",
+        target: "single",
+
+        cost: 25,
+        requiredLevel: 1,
+        skillLevel: 1,
+
+        status: "weaken",
+        statusChance: 95,
+        debuff: {
+            stat: "def",
+            value: 0.15,
+            duration: 2,
+        } ,
+        debuffUpgrade: 0.05,
+
+        desc: "",
+        damageScale: 1.5,
+        maxLevel: 5,
+        upgradeBonus: 0.1,
+    },
+
+    // Rouge
+    {
+        id: "backStab",
+        name: "Back Stab",
+        class: "rouge",
+        type: "active",
+        resource: "stamina",
+        target: "single",
+
+        cost: 20,
+        requiredLevel: 1,
+        skillLevel: 1,
+
+        status: "bleeding",
+        statusChance: 40,
+        desc: "",
+        damageScale: 1.5,
+        maxLevel: 5,
+        upgradeBonus: 0.2,
+    },
+
+    {
+        id: "fullyCharged",
+        name: "Fully Charged",
+        class: "rouge",
+        type: "active",
+        resource: "stamina",
+        target: "single",
+
+        cost: 25,
+        requiredLevel: 1,
+        skillLevel: 1,
+
+        status: "bleeding",
+        statusChance: 20,
+        desc: "",
+        damageScale: 2.0,
+        maxLevel: 5,
+        upgradeBonus: 0.2,
+    },
+
+    {
+        id: "quickSlash",
+        name: "Quick Slash",
+        class: "rouge",
+        type: "active",
+        resource: "stamina",
+        target: "single",
+
+        cost: 25,
+        requiredLevel: 1,
+        skillLevel: 1,
+
+        status: "bleeding",
+        statusChance: 10,
+        desc: "",
+        damageScale: 0.7,
+        hitCount: 3,
+        maxLevel: 5,
+        upgradeBonus: 0.1,
+    },
 ]
 
-const player = {
-    id: Date.now(),
-    name:"",
-    class: "",
-    level:1,
-    exp: 0,
-    expToNextLevel: 100,
-    mode: "",
-
-    atk: 10,
-    hp: 100,
-    maxAtk: 10,
-    maxHp: 100,
-    
-    statusPoints: 0,
-    str: 0,
-    int: 0,
-    dex: 0,
-
-    stamina: 100,
-    mana: 100,
-    maxStamina: 100,
-    maxMana: 100,
-
-    critChance: 5,
-    critDamage: 50,
-    evadeChance: 10,
-
-    skillSlot: 8,
-    status:"",
-    skill: [],
-    inventory: [],
-
-    skillPoints: 0,
-    PassivePoints: 0,
-}
-
-const enemy = {
-    id:name,
-    name: "enemy",
-
-    atk: maxAtk,
-    hp: maxHp,
-    def: 0,
-    expDrop: 0,
-    maxAtk: 0,
-    maxHp: 0,
-
-    status: "",
-    itemDrop: [],
-    skill: [],
-}
