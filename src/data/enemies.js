@@ -49,3 +49,23 @@ const enemy = [
         uniqueSkill: ["unyieldingSpirit"]
     },
 ]
+
+    const specialSkill = enemy.hp / 2
+
+function enemyAction(enemy, player) {
+    if (enemy.cooldown === 0) {
+        enemySkill(enemy, player)
+    }else {
+        normalAttack(enemy, player)
+    }
+}
+
+function bossAction(enemy, player) {
+    if (specialSkill) {
+        uniqueSkill()
+    }else if (enemy.cooldown === 0) {
+        enemySkill()
+    }else {
+        normalAttack()
+    }
+}
