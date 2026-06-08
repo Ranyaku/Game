@@ -1,3 +1,5 @@
+import enemySkill from "../data/enemySkills"
+
 const enemy = [
 
     {
@@ -50,22 +52,14 @@ const enemy = [
     },
 ]
 
-    const specialSkill = enemy.hp / 2
-
-function enemyAction(enemy, player) {
-    if (enemy.cooldown === 0) {
-        enemySkill(enemy, player)
-    }else {
-        normalAttack(enemy, player)
-    }
-}
 
 function bossAction(enemy, player) {
     if (specialSkill) {
-        uniqueSkill()
+        return uniqueSkill()
     }else if (enemy.cooldown === 0) {
-        enemySkill()
+        return enemySkill()
     }else {
-        normalAttack()
+        return normalAttack()
     }
 }
+
