@@ -29,7 +29,10 @@ function createPlayer(name) {
             evadeChance: 10,
             
             skillSlot: 8,
-            status:"",
+            status: {
+                type: "",
+                duration: 0 ,
+            },
             skill: [],
             inventory: [],
             
