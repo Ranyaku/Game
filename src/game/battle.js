@@ -59,14 +59,17 @@ function applySkill (attacker, defender, skill) {
     if (applyStatus) {
         defender.status.type = skill.status
         defender.status.duration = skill.statusDuration
-    }else {
-
     }
 
     if (skill.debuff) {
         defender.debuffStatus.push({
-            stat: skill.debuff.stat
+            stat: skill.debuffStatus.stat,
+            value: skill.debuffStatus.value,
+            duration: skill.debuffStatus.duration,
         })
+        defender[skill.debuffStatus.stat] = Math.round(
+            defender[skill.debuffStatus.stat] * (1 - skill.debuffStatus.stat)
+        )
     }
 
     return finalDamage
