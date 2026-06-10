@@ -52,23 +52,22 @@ function handleStatus(character) {
 function applySkill (attacker, defender, skill) {
 
     const applyStatus = Math.random() * 100 < skill.statusChance
-
     const finalDamage = calcDamage(attacker, defender, skill)
-    defender.hp -= finalDamage
+    defender.hp = Math.max(0, defender.hp - finalDamage)
 
     if (applyStatus) {
         defender.status.type = skill.status
         defender.status.duration = skill.statusDuration
     }
 
-    if (skill.debuff) {
+    if (skill.debuffStatus) {
         defender.debuffStatus.push({
             stat: skill.debuffStatus.stat,
             value: skill.debuffStatus.value,
             duration: skill.debuffStatus.duration,
         })
         defender[skill.debuffStatus.stat] = Math.round(
-            defender[skill.debuffStatus.stat] * (1 - skill.debuffStatus.stat)
+            defender[skill.debuffStatus.stat] * (1 - skill.debuffStatus.value)
         )
     }
 
