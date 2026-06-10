@@ -18,12 +18,17 @@ function calcDamage(attacker, defender, skill = null) {
 
 function handleStatus(character) {
 
-    const dotDmg = character.hp - character.maxHP * 0.1
+    const dotDmg = character.maxHp * 0.1
     const status = character.status
 
-    if (status.type === "poison" || "burn" || "bleeding") {
-        const remove = status.duration === 0 ? status.type = "" : status.duration = - 1
-        character.hp - dotDmg
+    if (status.type === "poison" || status.type === "burn" || status.type === "bleeding") {
+        if (status.duration <= 0) {
+            status.type = "" 
+            status.duration = 0
+        }else {
+            status.duration -= 1
+            character.hp = Math.max(0, character.hp - dotDmg)
+        }
     }
 
     if (!isAlive(character)) {
@@ -31,10 +36,38 @@ function handleStatus(character) {
         return false
     }
 
-    if (statu.type === "stun"){
-        const remove = status.duration === 0 ? status.type = "" : status.duration = - 1
+    if (status.type === "stun"){
+        if (status.duration <= 0) {
+            status.type = "" 
+            status.duration = 0
+        }else {
+            status.duration -= 1
+        }
         return false
     }
 
     return true
+}
+
+function applySkill (attacker, defender, skill) {
+
+    const applyStatus = Math.random() * 100 < skill.statusChance
+
+    const finalDamage = calcDamage(attacker, defender, skill)
+    defender.hp -= finalDamage
+
+    if (applyStatus) {
+        defender.status.type = skill.status
+        defender.status.duration = skill.statusDuration
+    }else {
+
+    }
+
+    if (skill.debuff) {
+        defender.debuffStatus.push({
+            stat: skill.debuff.stat
+        })
+    }
+
+    return finalDamage
 }

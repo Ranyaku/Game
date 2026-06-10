@@ -12,8 +12,10 @@ const enemy = [
         expDrop: 50,
         maxAtk: 5,
         maxHp: 50,
+        maxDef: 10,
         
         status: "",
+        debuffStatus: [],
         itemDrop: ["Slime Core"],
         skill: ["devour"],
     },
@@ -28,6 +30,7 @@ const enemy = [
         expDrop: 60,
         maxAtk: 10,
         maxHp: 50,
+        maxDef: 5,
         
         status: "",
         itemDrop: ["Goblin Ear", "Goblin Sword", "Goblin Fang"],
@@ -44,6 +47,7 @@ const enemy = [
         expDrop: 200,
         maxAtk: 20,
         maxHp: 100,
+        maxDef: 30,
         
         status: "",
         itemDrop: ["Orc Ear", "Orc Sword", "Orc Fang", "Orc Plate"],

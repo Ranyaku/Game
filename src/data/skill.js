@@ -9,8 +9,11 @@ const skill = [
         resource: "stamina",
         requiredLevel: 1,
         skillLevel: 1,
+
         status: "bleeding",
         statusChance:30,
+        statusDuration: 2,
+
         desc: "",
         damageScale: 1.5,
         maxLevel: 5,
@@ -32,6 +35,10 @@ const skill = [
 
         status: "counter",
         statusChance: 100,
+        buffStatus: {
+            duration: 2,
+        },
+
         desc: "",
         damageScale: 1.1,
         maxLevel: 5,
@@ -53,9 +60,9 @@ const skill = [
         status: "",
         statusChance: 0,
         desc: "",
-        damageScale: 1.6,
+        damageScale: 1.7,
         maxLevel: 5,
-        upgradeBonus: 0.1,
+        upgradeBonus: 0.2,
     },
 
     // Mage
@@ -73,6 +80,8 @@ const skill = [
 
         status: "burn",
         statusChance: 20,
+        statusDuration: 2,
+        
         desc: "",
         damageScale: 2.0,
         maxLevel: 5,
@@ -93,8 +102,14 @@ const skill = [
 
         status: "cold",
         statusChance: 25,
+        debuffStatus: {
+        stat: "def",
+        value: 0.2,
+        duration: 2,
+        },
+
         desc: "",
-        damageScale: 2.0,
+        damageScale: 1.8,
         maxLevel: 5,
         upgradeBonus: 0.15,
     },
@@ -113,6 +128,12 @@ const skill = [
 
         status: "electrified",
         statusChance: 25,
+        debuffStatus: {
+        stat: "atk",
+        value: 0.2,
+        duration: 1,
+        },
+
         desc: "",
         damageScale: 2.0,
         maxLevel: 5,
@@ -134,8 +155,10 @@ const skill = [
 
         status: "poison",
         statusChance: 50,
+        statusDuration: 2,
+
         desc: "",
-        damageScale: 1.5,
+        damageScale: 1.7,
         maxLevel: 5,
         upgradeBonus: 0.15,
     },
@@ -175,7 +198,7 @@ const skill = [
 
         status: "weaken",
         statusChance: 95,
-        debuff: {
+        debuffStatus: {
             stat: "def",
             value: 0.15,
             duration: 2,
@@ -203,6 +226,8 @@ const skill = [
 
         status: "bleeding",
         statusChance: 40,
+        statusDuration: 2,
+
         desc: "",
         damageScale: 1.5,
         maxLevel: 5,
@@ -223,6 +248,8 @@ const skill = [
 
         status: "bleeding",
         statusChance: 20,
+        statusDuration: 2,
+
         desc: "",
         damageScale: 2.0,
         maxLevel: 5,
@@ -243,6 +270,8 @@ const skill = [
 
         status: "bleeding",
         statusChance: 10,
+        statusDuration: 2,
+
         desc: "",
         damageScale: 0.7,
         hitCount: 3,

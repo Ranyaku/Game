@@ -11,8 +11,10 @@ function createPlayer(name) {
             
             atk: 10,
             hp: 100,
+            def: 10,
             maxAtk: 10,
             maxHp: 100,
+            maxDef: 10,
             
             statusPoints: 0,
             str: 1,
@@ -33,6 +35,7 @@ function createPlayer(name) {
                 type: "",
                 duration: 0 ,
             },
+            debuffStatus: [],
             skill: [],
             inventory: [],
             
