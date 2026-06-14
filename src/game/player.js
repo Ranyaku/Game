@@ -45,4 +45,4 @@ function createPlayer(name) {
     return player
 }
 
-export {createPlayer}
+export default createPlayer

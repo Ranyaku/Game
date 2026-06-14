@@ -1,6 +1,3 @@
-import { createPlayer } from "./player"
-import { createEnemy } from "./enemy"
-
 function isAlive(character) {
         return character.hp > 0
     }
@@ -73,3 +70,17 @@ function applySkill (attacker, defender, skill) {
 
     return finalDamage
 }
+
+function takeTurn (attacker, defender, action) {
+    if (action.type === "attack") {
+        const finalDamage = calcDamage(attacker, defender, null)
+        defender.hp = Math.max(0, defender.hp - finalDamage)
+        return finalDamage
+    }
+
+    if (action.type === "skill") {
+        return applySkill(attacker, defender, action.skill)
+    }
+}
+
+export {isAlive, calcDamage, handleStatus, applySkill, takeTurn}
