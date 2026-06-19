@@ -57,13 +57,4 @@ const enemy = [
 ]
 
 
-function bossAction(enemy, player) {
-    if (specialSkill) {
-        return uniqueSkill()
-    }else if (enemy.cooldown === 0) {
-        return enemySkill()
-    }else {
-        return normalAttack()
-    }
-}
-
+export default enemy

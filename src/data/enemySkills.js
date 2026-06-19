@@ -1,3 +1,5 @@
+import enemy from "./enemies"
+
 const enemySkill = [
     // Slime
 {
@@ -100,3 +102,5 @@ const enemySkill = [
 },
 
 ]
+
+export default enemySkill
