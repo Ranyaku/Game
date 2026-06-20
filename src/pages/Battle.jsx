@@ -28,38 +28,29 @@ function handlePlayerAction(action) {
 
     if (canAction) {
         const finalDamage = takeTurn(player, enemies[0], action)
-        setBattleLog([...battleLog, finalDamage])
+        setBattleLog([...battleLog, `${player.name} attack ${enemies[0].name} for ${finalDamage}`])
     }
 
-    if (!isAlive(enemies[0])) {
+    if (!isAlive(enemies[0])) {    
+        setBattleState("win")
         return
     }
 
     setTurn("enemy")
 }
 
-function checkBattleState() {
-    const allEnemiesDead = enemies.every(e => !isAlive(e))
-
-    if (allEnemiesDead) {
-        setBattleState("win")
-    }
-
-    if (!isAlive(player)) {
-        setBattleState("defeat")
-    }
-}
 
 function handleEnemyAction() {
     const canAction = handleStatus(enemies[0])
 
     if (canAction) {
-        const action = enemyAction(enemies[0])
+        const action = enemyAction(enemies[0], player)
         const finalDamage = takeTurn(enemies[0], player, action)
-        setBattleLog([...battleLog, '${player.name} attack ${enemies[0].name} for ${finalDamage} '])
+        setBattleLog([...battleLog, `${enemies[0].name} attack ${player.name} for ${finalDamage}`])
     }
 
     if (!isAlive(player)) {
+        setBattleState("defeat")
         return
     }
 
