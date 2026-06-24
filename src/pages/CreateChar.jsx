@@ -11,7 +11,7 @@ export default function CharCreate({ setPlayer, setGamePhase }) {
 
         const charName = createPlayer(name)
         setPlayer(charName)
-        setGamePhase("battle")
+        setGamePhase("charPanel")
     }
 
     return (

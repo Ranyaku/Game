@@ -1,7 +1,7 @@
 import SkillNode from './SkillNode'
 import skills from '../data/skill'
 
-export default function SkillRow({ level, layout, unlockedSkills, selectedSkill, playerLevel, onSelect, onUnlock }) {
+export default function SkillRow({ level, layout, unlockedSkills, selectedSkill, playerLevel, onSelect, onUnlock, isUnlocked }) {
   const slots = layout[level] || [null, null, null, null]
 
   return (
@@ -12,15 +12,16 @@ export default function SkillRow({ level, layout, unlockedSkills, selectedSkill,
         if (!skillId) return <div key={index} />
 
         const skillData = skills.find(s => s.id === skillId)
-        const isUnlocked = unlockedSkills.includes(skillId)
         const isLocked = playerLevel < level && !isUnlocked
+        const unlocked = isUnlocked(skillId)
         const isSelected = selectedSkill === skillId
+
 
         return (
           <div key={index} className="flex justify-center">
             <SkillNode
               skillData={skillData}
-              isUnlocked={isUnlocked}
+              isUnlocked={isUnlocked(skillId)}
               isLocked={isLocked}
               isSelected={isSelected}
               onClick={() => {

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import SkillRow from '../components/SkillRow'
+import SkillRow from './SkillRow'
 import skills from '../data/skill'
 
 const LEVELS = [30, 25, 20, 15, 10, 5, 1]
@@ -18,18 +18,19 @@ const SKILL_LAYOUT = {
 
 export default function SkillTree({ player, setPlayer }) {
   const [selectedSkill, setSelectedSkill] = useState(null)
-  const [unlockedSkills, setUnlockedSkills] = useState([])
-
   const layout = SKILL_LAYOUT[player?.class] || SKILL_LAYOUT.warrior
 
+  function isUnlocked(skillId) {
+    return player.skill.some(s => s.id === skillId)
+  } 
+  
   function handleUnlock(skillId) {
     if (player.skillPoints <= 0) return
-    if (unlockedSkills.includes(skillId)) return
+    if (isUnlocked(skillId)) return
 
-    setUnlockedSkills([...unlockedSkills, skillId])
     setPlayer({
       ...player,
-      skill: [...player.skill, skillId],
+      skill: [...player.skill, {id: skillId, skillLevel: 1}],
       skillPoints: player.skillPoints - 1
     })
   }
@@ -52,7 +53,7 @@ export default function SkillTree({ player, setPlayer }) {
             key={level}
             level={level}
             layout={layout}
-            unlockedSkills={unlockedSkills}
+            isUnlocked={isUnlocked}
             selectedSkill={selectedSkill}
             playerLevel={player?.level ?? 1}
             onSelect={setSelectedSkill}

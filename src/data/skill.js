@@ -1,4 +1,4 @@
-const skill = [
+const skills = [
     // Warrior
     {
         id: "thrust",
@@ -280,3 +280,4 @@ const skill = [
     },
 ]
 
+export default skills
