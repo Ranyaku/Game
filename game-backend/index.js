@@ -3,10 +3,13 @@ import express from "express";
 import pool from "./db/db.js";
 import userRouter from "./routes/user.js";
 import playerRouter from "./routes/player.js"
+import playerSkill from "./routes/playerSkill.js"
+import cors from 'cors'
 
 const app = express();
 
 app.use(express.json());
+app.use(cors())
 
 app.get("/", async (req, res) => {
   try {
@@ -23,7 +26,8 @@ app.get("/", async (req, res) => {
 });
 
 app.use("/api/users", userRouter);
-app.use("/api/player", playerRouter)
+app.use("/api/player", playerRouter);
+app.use("/api/player_skill", playerSkill)
 
 app.listen(5000, () => {
   console.log("Server jalan");

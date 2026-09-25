@@ -39,7 +39,7 @@ function createPlayer(name) {
             skill: [],
             inventory: [],
             
-            skillPoints: 3,
+            skillPoints: 1,
             passivePoints: 0,
         }
     return player

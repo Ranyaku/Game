@@ -1,13 +1,34 @@
-import { useState, useEffect, act } from 'react'
+import { useState, useEffect} from 'react'
 import { createEnemy } from '../game/enemy'
 import { isAlive, handleStatus, takeTurn } from '../game/battle'
 import { enemyAction } from '../game/enemy'
+import skills from '../data/skill'
+import axios from 'axios'
 
 export default function Battle({ player, setPlayer, setGamePhase }) {
     const [enemies, setEnemies] = useState([])
     const [battleLog, setBattleLog] = useState([])
     const [turn, setTurn] = useState("player") 
     const [battleState, setBattleState] = useState("ongoing")  
+    const [battlePlayer, setBattlePlayer] = useState(null)
+    const [battleSkills, setBattleSkills] = useState([])
+    const [skillData, setSkillData] = useState([])
+    
+    const equippedSkills = battleSkills.filter((s) => s.slot_position !== null)
+    const skillMapping = equippedSkills.map((x) => 
+        skills.find((s) => s.id === x.skill_id)
+    )
+
+    const skillDb = equippedSkills.map((dbSkill) => {
+        const skill = skills.find((sd) => sd.id === dbSkill.skill_id)
+
+        return {
+            ...skill, 
+            skill_level:dbSkill.skill_level
+        }
+    })
+
+
     
     function spawnEnemy() {
         const random = Math.random() * 100
@@ -20,6 +41,30 @@ export default function Battle({ player, setPlayer, setGamePhase }) {
             }else {
                 setEnemies([createEnemy("orc")])
             }
+        }
+    }
+
+    async function fetchBattleSkills() {
+        try {
+            const res = await axios.get(
+                `http://localhost:5000/api/player_skill/${player.id}`
+            )
+
+            setBattleSkills(res.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    async function fetchBattlePlayer(){
+        try {
+            const res = await axios.get(
+                `http://localhost:5000/api/player/${player.id}`
+            )
+
+            setBattlePlayer(res.data)
+        } catch (err) {
+            console.log(err)
         }
     }
 

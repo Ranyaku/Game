@@ -1,7 +1,7 @@
 import StatRow from "./StatRow";
 
 export default function StatPanel({ player, onAddStat }) {
-  const canAllocate = player.statusPoints > 0;
+  const canAllocate = player.status_points > 0;
 
   return (
     <div className="bg-gray-900 border border-gray-800 p-8 flex flex-col gap-8">
@@ -14,7 +14,7 @@ export default function StatPanel({ player, onAddStat }) {
             Points Remaining
           </span>
           <span className="text-3xl font-bold text-red-700">
-            {player.statusPoints}
+            {player.status_point}
           </span>
         </div>
       </div>
@@ -23,21 +23,21 @@ export default function StatPanel({ player, onAddStat }) {
         <StatRow
           label="Strength"
           desc="Increases atk, hp, def, and stamina"
-          value={player.str}
+          value={player.strength}
           canIncrease={canAllocate}
           onIncrease={() => onAddStat("str")}
         />
         <StatRow
           label="Dexterity"
           desc="Increases atk, stamina, evade, crit chance & damage"
-          value={player.dex}
+          value={player.dexterity}
           canIncrease={canAllocate}
           onIncrease={() => onAddStat("dex")}
         />
         <StatRow
           label="Intelligence"
           desc="Increases atk, mana, crit chance & damage"
-          value={player.int}
+          value={player.inteligence}
           canIncrease={canAllocate}
           onIncrease={() => onAddStat("int")}
         />

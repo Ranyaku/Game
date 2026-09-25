@@ -8,7 +8,6 @@ const skills = [
         cost: 15,
         resource: "stamina",
         requiredLevel: 1,
-        skillLevel: 1,
 
         status: "bleeding",
         statusChance:30,
@@ -31,7 +30,6 @@ const skills = [
 
         cost: 25,
         requiredLevel: 1,
-        skillLevel: 1,
 
         status: "counter",
         statusChance: 100,
@@ -55,7 +53,6 @@ const skills = [
 
         cost: 15,
         requiredLevel: 1,
-        skillLevel: 1,
 
         status: "",
         statusChance: 0,
@@ -76,7 +73,6 @@ const skills = [
 
         cost: 20,
         requiredLevel: 1,
-        skillLevel: 1,
 
         status: "burn",
         statusChance: 20,
@@ -98,7 +94,6 @@ const skills = [
 
         cost: 20,
         requiredLevel: 1,
-        skillLevel: 1,
 
         status: "cold",
         statusChance: 25,
@@ -124,7 +119,7 @@ const skills = [
 
         cost: 20,
         requiredLevel: 1,
-        skillLevel: 1,
+        
 
         status: "electrified",
         statusChance: 25,
@@ -151,7 +146,6 @@ const skills = [
 
         cost: 20,
         requiredLevel: 1,
-        skillLevel: 1,
 
         status: "poison",
         statusChance: 50,
@@ -173,7 +167,6 @@ const skills = [
 
         cost: 25,
         requiredLevel: 1,
-        skillLevel: 1,
 
         status: "",
         statusChance: 50,
@@ -194,7 +187,6 @@ const skills = [
 
         cost: 25,
         requiredLevel: 1,
-        skillLevel: 1,
 
         status: "weaken",
         statusChance: 95,
@@ -222,7 +214,6 @@ const skills = [
 
         cost: 20,
         requiredLevel: 1,
-        skillLevel: 1,
 
         status: "bleeding",
         statusChance: 40,
@@ -244,7 +235,6 @@ const skills = [
 
         cost: 25,
         requiredLevel: 1,
-        skillLevel: 1,
 
         status: "bleeding",
         statusChance: 20,
@@ -266,7 +256,6 @@ const skills = [
 
         cost: 25,
         requiredLevel: 1,
-        skillLevel: 1,
 
         status: "bleeding",
         statusChance: 10,

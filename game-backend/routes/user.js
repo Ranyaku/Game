@@ -6,7 +6,7 @@ router.post("/", async (req, res) => {
   const { username } = req.body;
 
   try {
-    const [rows] = await pool.query("SELECT id FROM users WHERE username = ?", [
+    const [rows] = await pool.query("SELECT id, username FROM users WHERE username = ?", [
       username,
     ]);
 
@@ -22,7 +22,7 @@ router.post("/", async (req, res) => {
       );
       return res.status(201).json({
         message: "Account Created",
-        userId: { id: result.insertId, username },
+        user: { id: result.insertId, username }
       });
     }
   } catch (err) {
