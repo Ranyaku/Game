@@ -114,6 +114,11 @@ function handleEnemyAction() {
         spawnEnemy()
     }, [])
 
+    useEffect(() => {
+        setSkillData(skillDb)
+        console.log(skillData)
+    },[battleSkills])
+
     
     return (
     <div className="min-h-screen bg-gray-950 flex flex-col p-6 max-w-3xl mx-auto w-full">
